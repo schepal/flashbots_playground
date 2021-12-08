@@ -37,6 +37,10 @@ Rather than sending the transaction through the public mempool, a user could use
 ![](pics/sponsor_rescued.png)
 
 
+### Goerli Addresses Used In This Analysis:
+- Exploited Address: [`0x39405b216a9a4a1a1e3439cb311543b09c7f3e50`](https://goerli.etherscan.io/address/0x39405b216a9a4a1a1e3439cb311543b09c7f3e50)
+- Sponsor Address: [`0xf82bB95942194cB114340C4605B5B0Be56DA6De7`](https://goerli.etherscan.io/address/0xf82bB95942194cB114340C4605B5B0Be56DA6De7)
+- Deployed NFT Address (thanks to Paradigm's awesome [faucet](https://faucet.paradigm.xyz/)): [`0xf5de760f2e916647fd766b4ad9e85ff943ce3a2b`](https://goerli.etherscan.io/address/0xf5de760f2e916647fd766b4ad9e85ff943ce3a2b)
 
 
 
