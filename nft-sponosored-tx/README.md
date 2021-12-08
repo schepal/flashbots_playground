@@ -26,7 +26,21 @@ Rather than sending the transaction through the public mempool, a user could use
 
 3. The user will have to compile these two transactions into a calling the `signedTxBundle` RPC endpoint will be sent to the Flashbots relayer. Note: given all of this is done at once (ie: atomically) there’s no feasible way for a sniper to front-run and beat us to this transaction. From here the Flashbots relayer will directly connect the user’s transaction to miners. If miners choose to include this bundle into the block then the developer has successfully rescued his NFT. In the case the miner doesn’t include this transaction in the current block, nobody will know about this transaction given it did not touch the public mempool. When this happens the developer would have to re-submit their transaction until the miner finally includes it in the block (ie: the developer could increase the gas fee to incentivize the miner to include it in the block faster).  
 
-![](pics/js_code.png)
+```javascript
+// sign the transactions into a single flashbots bundle
+const signedTxBundle = await flashbotProvider.signBundle([
+    {   
+        // the sponsor will be sending ETH to the exploited address in tx1
+        signer: sponsor,
+        transaction: tx1
+    },
+    {
+        // the exploited address will send the NFT to the sponsor address in tx2
+        signer: exploited,
+        transaction: tx2
+    }
+]);
+```
 
 4. Using the [`sponsorTx.js`](https://github.com/schepal/flashbots_playground/blob/main/nft-sponosored-tx/src/sponsorTx.js) script we were able to successfully transfer the NFT from the exploited address. Notice how the sponsor address now has the NFT which is previously stuck in the exploited address. At the same time notice how the exploited address no longer has the NFT in its balance. There is some ETH remaining from the sponsor paying it (note: this can be improved by more accurately estimating gas - in this case it was just as an example). This remaining ETH would be sniped away immediately once it hits the address.  
 
