@@ -10,9 +10,10 @@ Here's the key problem - in order to transfer the NFT to a new safe address ther
 
 Rather than sending the transaction through the public mempool, a user could use Flashbots and group multiple transactions into the same bundle provided they are atomic. In this case, the developer could create a sponsor transaction where he can make a transaction from account X but pay for this transaction's gas fees from account Y. Below is a diagram showcasing the steps associated with this process:
 
-
 - Transaction 1: The sponsor address will transfer a small portion of ETH to the exploited address to pay for the gas fees to transfer the NFT to a safe address
 - Transaction 2: Transfer the NFT from the exploited address to the safe address
+
+![](pics/nft-transfer-example.png)
 
 ## Walkthrough: 
 
